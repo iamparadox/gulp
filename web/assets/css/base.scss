@@ -1,0 +1,230 @@
+// 定义全局参数变量
+$color:(
+    fontColor : gray,
+	writeColor : #fff,
+	grayColor : #efefef,
+    tipColor : #e94936,
+	navbor : #f2f2f2,
+    borderColor :#979797,
+    green : #7ED321,
+    blue : #1C72BD
+);
+$breakpoints: (
+    small: 767px,
+    medium: 992px,
+    large: 1200px,
+);
+// 重置差别
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+    outline: none;
+    border: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+html, body {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+}
+html {
+    -webkit-text-size-adjust: none;
+    font-size: 625% !important;
+    /*mobile chrome浏览器下字体不能小于12px*/
+}
+body {
+    font-size: 0.14rem;
+    color: map-get($color, fontColor);
+    font-family: "Microsoft YaHei UI Light", "Microsoft YaHei Light", "Microsoft YaHei", simsun, "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti;
+    -webkit-font-smoothing:antialiased;
+}
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+fieldset,
+a img {
+    border: 0;
+}
+a,
+a:hover,
+a:after,
+a:before{
+    text-decoration:none;
+}
+ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{margin:0;padding:0}
+address,caption,cite,code,dfn,em,th,var,i {
+    cursor: pointer;
+    font-style: normal;
+    font-weight: normal;
+}
+li {
+    list-style: none;
+}
+caption,
+th {
+    text-align: left;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+q:before,
+q:after {
+    content: '';
+}
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+input[type=date],
+button,
+select {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    /*去掉苹果的默认UI来渲染按钮 、解决部分手机浏览器对border：none无效办法*/
+}
+ input::-webkit-input-placeholder {/*所用的input的占位符placeholder的字体颜色*/
+    color: map-get($color,grayColor);
+}
+/*input:focus: */
+input:focus::-webkit-input-placeholder{
+    color:map-get($color,grayColor);
+}
+// 浮动 相关
+clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.text-flow{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+//other
+.row {
+	overflow: hidden;
+	clear: both;
+}
+@each $col in 10, 20, 25, 30, 33, 35, 40, 50, 60, 65, 70, 75, 80, 90 {
+	.col-#{$col} {
+		width: $col * 1%;
+		float: left;
+	}
+}
+// symbol预留
+.icon {
+   vertical-align: -0.15em;
+   overflow: hidden;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   font-family:"iconfont" !important;
+}
+// 公共样式
+.shadow{
+	box-shadow: 2px 3px 8px 2px map-get($color,grayColor);
+}
+nav{
+	width: 100%;
+    height: .8rem;
+    top:0;
+    position: relative;
+    .wIcon,.logo{
+        width: .7rem;
+        height: 1px;
+        margin-left: .3rem;
+        padding-top: .8rem;
+        text-indent: -9999em;
+        display: block;
+        overflow: hidden;
+        transform: scale(0.65,0.65);
+        background: url('../images/logo-2.png') no-repeat;
+    }
+    ul{
+        margin-right: 0.3rem;
+        line-height: 0.3rem;
+    }
+    ul li{
+        margin: 0 0.2rem 0 0;
+        cursor: pointer;
+    }
+    ul li+li{
+        margin:0 0.2rem;
+        overflow: hidden;
+    }
+    ul li a{
+        line-height: .8rem;
+        font-size: 0.16rem;
+        color: map-get($color,fontColor);
+    }
+    .logo{
+        background: url(../images/logo-1.jpg) no-repeat;
+    }
+    .active{
+        color: #87ceeb !important;
+    }
+    .active:after{
+        width: 0.64rem;
+        margin-top: -5px;
+        content: "";
+        display: block;
+        border-bottom:5px solid skyblue;
+    }
+}
+.fNav {
+    height: .8rem;
+    top:0;
+    left: 0;
+    position: absolute;
+    z-index: 999;
+    ul li a{
+        font-size: 0.16rem;
+        color: map-get($color,writeColor);
+    }
+}
+nav.bor-btm{
+    border-bottom:1px solid map-get($color,navbor);
+}
+.cTitle,.eTitle{
+    width: 100%;
+    margin-top: 0.4rem;
+    text-align: center;
+    line-height: 0.22rem;
+    font-size: 0.18rem;
+    color: #4f4f4f;
+}
+.eTitle{
+    margin-top: 0.15rem;
+    color: #ccc;
+}
+.eTitle:after{
+    width:0.5rem;
+    margin:0.1rem auto;
+    text-align: center;
+    content: "";
+    display: block;
+    border: 2px solid skyblue;
+}
+.overflow{
+    overflow: hidden;
+}
+.dn{
+    display: none !important;
+}
